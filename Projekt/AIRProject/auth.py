@@ -18,7 +18,8 @@ def validate():
 
     user = User.query.filter_by(login=login).first()
     if not user or not check_password_hash(user.password, password):
-        flash('Please check your login details and try again.')
+        if not user: flash('Please check your login details and try again.')
+        if not check_password_hash(user.password, password): flash('Wrong password, is your hashed password <' + user.password + '> ?')
         return redirect(url_for('auth.login'))
     login_user(user, remember = remember)
     return redirect(url_for('main.profile'))
