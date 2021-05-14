@@ -29,4 +29,8 @@ def profile():
 #
 #    for arg in args:
 #        #nie wiem jak będziemy przekazywać tagi, a że na froncie sięnie znam, to nie będę na ślepo implementował :p
+#        #newpreference.setValue(arg.key, 20)
+#   
+#    db.session.add(newPreference)
+#    db.session.commit()
 #    return render_template('profile.html', name=current_user.login)
