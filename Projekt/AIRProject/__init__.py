@@ -5,9 +5,11 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-
 def create_app():
     app = Flask(__name__)
+
+    if __name__ == "__main__":
+        app.run(ssl_context=('cert.pem', 'key.pem'))
 
     app.config['SECRET_KEY'] = '12345'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
@@ -34,5 +36,6 @@ def create_app():
     app.register_blueprint(main_blueprint)
 
     return app
+
 
 db.create_all(app=create_app())
