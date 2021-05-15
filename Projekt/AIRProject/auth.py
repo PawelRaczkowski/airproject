@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from . import db
+import random
 
 auth = Blueprint('auth', __name__)
 
@@ -22,7 +23,7 @@ def validate():
         elif not check_password_hash(user.password, password): flash('Wrong password, is your hashed password <' + user.password + '> ?')
         return redirect(url_for('auth.login'))
     login_user(user, remember = remember)
-    return redirect(url_for('main.profile'))
+    return redirect(url_for('main.userpage'))
 
 @auth.route('/signup')
 def signup():
@@ -43,8 +44,18 @@ def add_user():
     if user:
         flash(' User already exists')
         return redirect(url_for('auth.signup'))
-
-    new_user = User(login=name, password=generate_password_hash(password, method='sha256'))
+    flag=True
+    new_user=None
+    while(flag):
+        newid=random.randint(1,1000)
+        new_user = User(id=newid,login=name, password=generate_password_hash(password, method='sha256'))
+        user = User.query.filter_by(id=newid).first()
+        if user:
+            flash('User already exists')
+            return redirect(url_for('auth.signup'))
+        else:
+            flag=False
+    
 
     # add the new user to the database
     db.session.add(new_user)

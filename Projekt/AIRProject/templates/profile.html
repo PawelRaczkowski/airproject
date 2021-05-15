@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-    Witamy w kolonii!
-    *jeb*
-    ...
-    ...
-    Nazywam sie ({{ name }})## Nie interesuje mnie towje imie.
-    Jestes tu nowy, a do mnie nalezy dbanie o nowych.
-</h1>
+<table>
+    <h1>Information about user:</h1>
+    <tr>
+      <td>Username</td>
+    </tr>
+    <tr>
+      <td>{{ name }}</td>
+    </tr>
+    <h2>Please fill form about your preferences <a href="{{ url_for('main.fillingForm') }}">HERE!!! </a></h2>
+  </table>
 {% endblock %}

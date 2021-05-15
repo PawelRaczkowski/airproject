@@ -24,6 +24,14 @@ class Tags(db.Model):
     synagogue = db.Column(db.Integer)
     tourist_attraction = db.Column(db.Integer)
 
+    def setValues(self, args, whole_list):
+        for arg in args:
+            print(arg)
+            self.setValue(arg,10)
+            whole_list.remove(arg)
+        for arg in whole_list:
+            self.setValue(arg,3)
+        
     def setValue(self, key, value): # nie wiem czy zadziała :p
         if (key == "amusement_park"): self.amusement_park = value
         elif (key == "aquarium"): self.aquarium = value

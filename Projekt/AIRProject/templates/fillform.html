@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Choose your preferences:</h1>
+<form action="/createPreference" method="POST">
+    <input type="checkbox" name="amusement_park" value="amusement_park" /> Amusement Park <br>
+    <input type="checkbox" name="aquarium" value="aquarium" /> Aquarium <br>
+    <input type="checkbox" name="art_gallery" value="art_gallery" /> Art Gallery <br>
+    <input type="checkbox" name="bar" value="bar" /> Bar <br>
+    <input type="checkbox" name="cafe" value="cafe" /> Cafe <br>
+    <input type="checkbox" name="casino" value="casino" /> Casino <br>
+    <input type="checkbox" name="hindu_temple" value="hindu_temple" /> Hindu Temple <br>
+    <input type="checkbox" name="church" value="church" /> Church <br>
+    <input type="checkbox" name="movie_theater" value="movie_theater" /> Movie Theater <br>
+    <input type="checkbox" name="museum" value="museum" /> Museum <br>
+    <input type="checkbox" name="night_club" value="night_club" /> Night Club <br>
+    <input type="checkbox" name="park" value="park" /> Park <br>
+    <input type="checkbox" name="restaurant" value="restaurant" /> Restaurant <br>
+    <input type="checkbox" name="synagogue" value="synagogue" /> Synagogue <br>
+    <input type="checkbox" name="tourist_attraction" value="tourist_attraction" /> Tourist Attraction <br>
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}
