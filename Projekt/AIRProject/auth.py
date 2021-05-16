@@ -44,18 +44,19 @@ def add_user():
     if user:
         flash(' User already exists')
         return redirect(url_for('auth.signup'))
-    flag=True
-    new_user=None
-    while(flag):
-        newid=random.randint(1,1000)
-        new_user = User(id=newid,login=name, password=generate_password_hash(password, method='sha256'))
-        user = User.query.filter_by(id=newid).first()
-        if user:
-            flash('User already exists')
-            return redirect(url_for('auth.signup'))
-        else:
-            flag=False
-    
+    #flag=True # wykomentowalem to, bo bez tego dziala :p
+    #new_user=None
+    #while(flag):
+    #    newid=random.randint(1,1000)
+    #    new_user = User(id=newid,login=name, password=generate_password_hash(password, method='sha256'))
+    #    user = User.query.filter_by(id=newid).first()
+    #    if user:
+    #        flash('User already exists')
+    #        return redirect(url_for('auth.signup'))
+    #    else:
+    #        flag=False
+    new_user = User(login=name, password=generate_password_hash(password, method='sha256'))
+
 
     # add the new user to the database
     db.session.add(new_user)
