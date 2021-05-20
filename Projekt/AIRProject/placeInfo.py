@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 import urllib
 
 def getInfoString(placeName):
-    response = requests.get("https://pl.wikipedia.org/w/api.php?action=opensearch&format=json&search=" + urllib.parse.quote(placeName))#mo¿na daæ trochê wiêcej zdañ :p
+    response = requests.get("https://pl.wikipedia.org/w/api.php?action=opensearch&format=json&search=" + urllib.parse.quote(placeName))#moï¿½na daï¿½ trochï¿½ wiï¿½cej zdaï¿½ :p
     #test kod odpowiedzi
     #if response.json()[1][0]:#pierwszy lepszy wynik
     if (len(response.json()[1]) > 0):
@@ -14,7 +14,7 @@ def getInfoString(placeName):
         return output
     return None
 
-def getInfoMP3(placeName): #zwraca nazwê pliku, jeœli udane
+def getInfoMP3(placeName): #zwraca nazwï¿½ pliku, jeï¿½li udane
     toRead = getInfoString(placeName)
     if toRead:
         engine = pyttsx3.init()

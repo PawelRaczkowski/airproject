@@ -82,3 +82,19 @@ class Tags(db.Model):
         elif (key == "restaurant"): self.restaurant -= value
         elif (key == "synagogue"): self.synagogue -= value
         elif (key == "tourist_attraction"): self.tourist_attraction -= value
+
+
+class Monument:
+
+    def __init__(self, name, latitude,longitude, types, rating, image_reference):
+        self.name = name
+        self.latitude=latitude
+        self.longitude=longitude
+        self.types=types
+        self.rating=rating
+        self.image_reference=image_reference
+
+    def printMonument(self):
+        print('Name of monument: ', self.name, '\n Latitude: ',self.latitude, '\n Longitude: ',self.longitude)
+        print('\nTypes: ', self.types, '\n')
+        print('Rating Google: ', self.rating, '\n')

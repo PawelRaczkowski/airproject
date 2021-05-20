@@ -1,39 +1,86 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Your geolocation: </h1>
-<p id = "status"></p>
-<a id = "map-link" target="_blank"></a>
-<script> 
-function geoFindMe() {
+<form method="POST" action="/searchMonuments">
+  <div class="field">
+      <div class="control">
+        <label for="latitude">Your latitude: </label>
+        <input id="latitude" name="latitude">
+      </div>
+  </div>
+  <div class="field">
+      <div class="control">
+        <label for="longitude">Your longitude: </label>
+        <input id="longitude" name="longitude">
+      </div>
+  </div>
+  <div class="field">
+      <div class="control">
+        <label for="radius">Radius [km]:</label>
+        <input class="input" type="number" id= "radius" name="radius">
+      </div>
+  </div>
+  <button class="button is-block is-info">Search</button>
+</form>
 
-const status = document.querySelector('#status');
-const mapLink = document.querySelector('#map-link');
+<script src="{{url_for('static', filename='geoFindMe.js')}}"> 
+</script>
 
-mapLink.href = '';
-mapLink.textContent = '';
+<script>
+  function generate_table() {
+  var listOfObjects = '{{ monums }}';
+  console.log(listOfObjects);
+  if(listOfObjects===undefined)
+  {
+    return 'Empty list'
+  }
+  else
+  {
+  
+  var body = document.getElementsByTagName("body")[0];
 
-function success(position) {
-  const latitude  = position.coords.latitude;
-  const longitude = position.coords.longitude;
+  var tbl = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+  var row = document.createElement("tr");
 
-  status.textContent = '';
-  mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-  mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+  var cell = document.createElement("td");
+  var cellText = document.createTextNode(listOfObjects[0][0]);
+  cell.appendChild(cellText);
+  row.appendChild(cell);
+  tblBody.appendChild(row);
+
+  tbl.appendChild(tblBody);
+
+  body.appendChild(tbl);
+
+  tbl.setAttribute("border", "2");
+  // creating all cells
+  // for (var i = 0; i < listOfObjects.length; i++) {
+  //   // creates a table row
+  //   var row = document.createElement("tr");
+
+  //   for (var j = 0; j < listOfObjects[i]; j++) {
+  //     // Create a <td> element and a text node, make the text
+  //     // node the contents of the <td>, and put the <td> at
+  //     // the end of the table row
+  //     var cell = document.createElement("td");
+  //     var cellText = document.createTextNode(listOfObjects[i]);
+  //     cell.appendChild(cellText);
+  //     row.appendChild(cell);
+  //   }
+
+  //   // add the row to the end of the table body
+  //   tblBody.appendChild(row);
+  // }
+
+  // // put the <tbody> in the <table>
+  // tbl.appendChild(tblBody);
+  // // appends <table> into <body>
+  // body.appendChild(tbl);
+  // // sets the border attribute of tbl to 2;
+  // tbl.setAttribute("border", "2");
+  }
 }
-
-function error() {
-  status.textContent = 'Unable to retrieve your location';
-}
-
-if(!navigator.geolocation) {
-  status.textContent = 'Geolocation is not supported by your browser';
-} else {
-  status.textContent = 'Locating…';
-  navigator.geolocation.getCurrentPosition(success, error);
-}
-
-}
-geoFindMe();
+generate_table();
 </script>
 {% endblock %}
