@@ -1,9 +1,11 @@
 from flask import Flask, render_template
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_caching import Cache
 
 db = SQLAlchemy()
+
+cache=Cache()
 
 def create_app():
     app = Flask(__name__)
@@ -14,6 +16,9 @@ def create_app():
     app.config['SECRET_KEY'] = '12345'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
+    cache.init_app(app, config={'CACHE_TYPE': 'SimpleCache'})
+    with app.app_context():
+        cache.clear()
     db.init_app(app)
     
     login_manager = LoginManager()

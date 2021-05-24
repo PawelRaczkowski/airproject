@@ -11,13 +11,16 @@ def getInfoString(placeName):
         querryParam =  urllib.parse.quote(response.json()[1][0])#pierwszy lepszy wynik
         response = requests.get("https://pl.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences=3&exlimit=1&explaintext=1&formatversion=2&format=json&titles=" + querryParam)
         output = response.json()["query"]["pages"][0]["extract"].replace("\n", "").split("==")[0]#czaryy
+        print(output)
         return output
-    return None
+    else:
+        return 'Jesteś na miejscu ' +placeName
+   
 
 def getInfoMP3(placeName): #zwraca nazw� pliku, je�li udane
     toRead = getInfoString(placeName)
     if toRead:
-        engine = pyttsx3.init()
+        engine = pyttsx3.init('sapi5')
         engine.setProperty("rate", 150)
         engine.save_to_file(toRead,placeName + ".mp3")
         engine.runAndWait()

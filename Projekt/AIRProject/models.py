@@ -1,10 +1,18 @@
 from flask_login import UserMixin
 from . import db
 
+
+
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
     login = db.Column(db.String(1000), unique=True)
     password = db.Column(db.String(100))
+
+class History(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    UserID=db.Column(db.Integer)
+    chosenMonument=db.Column(db.String(100))
 
 class Tags(db.Model):
     UserID = db.Column(db.Integer, primary_key=True) 
@@ -23,7 +31,9 @@ class Tags(db.Model):
     restaurant = db.Column(db.Integer)
     synagogue = db.Column(db.Integer)
     tourist_attraction = db.Column(db.Integer)
-
+    point_of_interest=db.Column(db.Integer)
+    establishment=db.Column(db.Integer)
+    
     def setValues(self, args, whole_list):
         for arg in args:
             print(arg)
@@ -48,6 +58,8 @@ class Tags(db.Model):
         elif (key == "restaurant"): self.restaurant = value
         elif (key == "synagogue"): self.synagogue = value
         elif (key == "tourist_attraction"): self.tourist_attraction = value
+        elif (key == "point_of_interest"): self.point_of_interest=value
+        elif (key =="establishment"): self.establishment=value
 
     def addValue(self, key, value): # nie wiem czy zadziała :p
         if (key == "amusement_park"): self.amusement_park += value
@@ -65,6 +77,8 @@ class Tags(db.Model):
         elif (key == "restaurant"): self.restaurant += value
         elif (key == "synagogue"): self.synagogue += value
         elif (key == "tourist_attraction"): self.tourist_attraction += value
+        elif (key == "point_of_interest"): self.point_of_interest+=value
+        elif (key =="establishment"): self.establishment+=value
 
     def remValue(self, key, value): # nie wiem czy zadziała :p
         if (key == "amusement_park"): self.amusement_park -= value
