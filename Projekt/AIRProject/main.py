@@ -209,8 +209,8 @@ def ChosenMonument():
     UpdateSetOfTags(monument, setOfTags)
     ## TODO:mapka google która wyznacza Ci trasę,jak dotrzesz to wykorzystać czytanie wikipedii głosem IVONY
 
-    mp3fileName=getInfoMP3(chosen)
-    print('File name mp3',mp3fileName)
+    textToSay=getInfoString(chosen)
+    
     return render_template('chosenMonument.html', choice=chosen, sourceLat=cache.get('sourceLatitude'),
      sourceLong=cache.get('sourceLongitude'), destLat=destLatitude,
-    destLong=destLongitude, mp3file=mp3fileName) 
+    destLong=destLongitude, text=textToSay) 

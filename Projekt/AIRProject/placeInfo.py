@@ -20,9 +20,9 @@ def getInfoString(placeName):
 def getInfoMP3(placeName): #zwraca nazw� pliku, je�li udane
     toRead = getInfoString(placeName)
     if toRead:
-        engine = pyttsx3.init('sapi5')
+        engine = pyttsx3.init('dummy')
         engine.setProperty("rate", 150)
-        engine.save_to_file(toRead,placeName + ".mp3")
+        engine.say(toRead)
         engine.runAndWait()
         return placeName + ".mp3"
     return None

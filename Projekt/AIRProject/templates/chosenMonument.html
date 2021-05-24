@@ -3,7 +3,7 @@
 {% block content %}
 <h1 class="title">Wybrałeś {{choice}} :)</h1>
 <iframe name="mapframe" width="850" height="700" id="mapframe"
-src="https://www.google.com/maps?z=11&amp;f=d&amp;output=embed&saddr={{sourceLat}},{{sourceLong}}&daddr={{destLat}},{{destLong}}">
+src="https://www.google.com/maps?z=11&amp;f=d&amp;output=embed&saddr={{sourceLat}},{{sourceLong}}&daddr={{destLat}},{{destLong}}&zoom=9">
 </iframe>
 <script>
 function geoFindMe() {
@@ -93,7 +93,7 @@ new_url+=String(sourceLongitude)+"&daddr=";
 new_url+=String(destLatitude)+","+String(destLongitude);
 
 
-document.getElementById('mapframe').src=new_url;
+//document.getElementById('mapframe').src=new_url; nie dziala na razie
 
 var new_results=[];
 new_results.push(sourceLatitude);
@@ -129,11 +129,12 @@ intervalId=setInterval(function(){
     btn.innerHTML="Listen information about this place";
     btn.onclick=function()
     {
-            var fileName= '{{mp3file}}'
-            var audio = new Audio(fileName);
-            audio.play();
+        var msg = new SpeechSynthesisUtterance();
+        var textToSay= '{{text}}'
+        msg.text = textToSay;
+        window.speechSynthesis.speak(msg);  
     }
-    document.body.appendChild(btn);        
+    document.getElementById('dynamicplace').appendChild(btn);        
 }
 }, 3000)
 
