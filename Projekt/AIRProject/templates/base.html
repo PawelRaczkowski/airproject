@@ -23,7 +23,47 @@
         
         input[type="number"] {
             width:100px;
-        }   
+        }
+
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            background: green;
+            border: 0px;
+        }
+
+            .styled-table thead tr {
+                color: white;
+                background-color: #009879;
+                text-align: left;
+                border: 0px;
+            }
+
+            .styled-table th,
+            .styled-table td {
+                padding: 12px 15px;
+                border: 0px;
+            }
+
+            .styled-table tbody tr {
+                border-bottom: 1px solid #dddddd;
+                background-color: white;
+                color: black;
+            }
+
+                .styled-table tbody tr:nth-of-type(even) {
+                    background-color: #F0F0F0;
+                }
+
+                .styled-table tbody tr:last-of-type {
+                    border-bottom: 2px solid #009879;
+                }
         </style>
 </head>
 

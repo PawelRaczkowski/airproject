@@ -2,29 +2,32 @@
 
 {% block content %}
 <h1 class='title'>Found monuments</h1>
-<table>  
-    <tr>
-      <th>Name</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Types</th>
-      <th>Rating</th>
-    </tr>
-    
-    {%for i in monums:%}
-    <tr>
-        <td>{{i.name}}</td>
-        <td>{{i.latitude}}</td>
-        <td>{{i.longitude}}</td>
-        <td>
-        {%for j in i.types:%}
-        {{j}} 
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Types</th>
+            <th>Rating</th>
+            <th>Choose</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for i in monums:%}
+        <tr>
+            <td>{{i.name}}</td>
+            <td>{{i.latitude}}</td>
+            <td>{{i.longitude}}</td>
+            <td>
+                {%for j in i.types:%}
+                {{j}}
+                {%endfor%}
+            </td>
+            <td>{{i.rating}}</td>
+            <td><a href="{{ url_for('main.ChosenMonument', monument=i.name, latitude=i.latitude, longitude=i.longitude) }}">Choose</a></td>
+        </tr>
         {%endfor%}
-      </td>
-        <td>{{i.rating}}</td>
-        <td><a href="{{ url_for('main.ChosenMonument', monument=i.name, latitude=i.latitude, longitude=i.longitude) }}">Choose</a></td>
-      </tr>
-            {%endfor%}
-    
-  </table>
+    </tbody>
+</table>
 {% endblock %}

@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<table>
-    <h1>Information about user:</h1>
-    <tr>
-      <td>Username:</td>
-      <td>{{ name }}</td>
-    </tr>
-    <tr>
-      <td>Bar:</td>
-      <td>{{ yourtag.bar }}</td>
-    </tr>
-  </table>
+<h1>Information about user:</h1>
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Bar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td>{{ name }}</td>
+        <td>{{ yourtag.bar }}</td>
+    </tbody>
+</table>
 {% endblock %}

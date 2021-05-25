@@ -1,14 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<table>
-    <h1>Information about user:</h1>
-    <tr>
-      <td>Username</td>
-    </tr>
-    <tr>
-      <td>{{ name }}</td>
-    </tr>
+<h1>Information about user:</h1>
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ name }}</td>
+        </tr>
+    </tbody>
+</table>
     <h2>Please fill form about your preferences <a href="{{ url_for('main.fillingForm') }}">HERE!!! </a></h2>
-  </table>
 {% endblock %}
