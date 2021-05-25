@@ -1,17 +1,91 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Information about user:</h1>
+<h1 class="title">Information about user</h1>
 <table class="styled-table">
     <thead>
         <tr>
-            <th>Username</th>
-            <th>Bar</th>
+            <th>Information</th>
+            <th>Value</th>
         </tr>
     </thead>
     <tbody>
-        <td>{{ name }}</td>
-        <td>{{ yourtag.bar }}</td>
+        <tr>
+            <td>Username</td>
+            <td>{{ name }}</td>
+        </tr>
+        <tr>
+            <td>Amusement Park preference</td>
+            <td>{{ yourtag.amusement_park }}</td>     
+        </tr>
+        <tr>
+            <td>Aquarium preference</td>
+            <td>{{ yourtag.aquarium }}</td>     
+        </tr>
+        <tr>
+            <td>Art gallery preference</td>
+            <td>{{ yourtag.art_gallery }}</td>     
+        </tr>
+        <tr>
+            <td>Bar preference</td>
+            <td>{{ yourtag.bar }}</td>     
+        </tr>
+        <tr>
+            <td>Bar preference</td>
+            <td>{{ yourtag.bar }}</td>     
+        </tr>
+        <tr>
+            <td>Cafe preference</td>
+            <td>{{ yourtag.cafe }}</td>     
+        </tr>
+        <tr>
+            <td>Casino preference</td>
+            <td>{{ yourtag.casino }}</td>     
+        </tr>
+        <tr>
+            <td>Hindu Temple preference</td>
+            <td>{{ yourtag.hindu_temple }}</td>     
+        </tr>
+        <tr>
+            <td>Church preference</td>
+            <td>{{ yourtag.church }}</td>     
+        </tr>
+        <tr>
+            <td>Movie Theater preference</td>
+            <td>{{ yourtag.movie_theater }}</td>     
+        </tr>
+        <tr>
+            <td>Museum preference</td>
+            <td>{{ yourtag.museum }}</td>     
+        </tr>
+        <tr>
+            <td>Night Club preference</td>
+            <td>{{ yourtag.night_club }}</td>     
+        </tr>
+        <tr>
+            <td>Park preference</td>
+            <td>{{ yourtag.park }}</td>     
+        </tr>
+        <tr>
+            <td>Restaurant preference</td>
+            <td>{{ yourtag.restaurant }}</td>     
+        </tr>
+        <tr>
+            <td>Synagogue preference</td>
+            <td>{{ yourtag.synagogue }}</td>     
+        </tr>
+        <tr>
+            <td>Tourist Attraction preference</td>
+            <td>{{ yourtag.tourist_attraction }}</td>     
+        </tr>
+        <tr>
+            <td>Point of interest preference</td>
+            <td>{{ yourtag.point_of_interest }}</td>     
+        </tr>
+        <tr>
+            <td>Establishment preference</td>
+            <td>{{ yourtag.establishment }}</td>     
+        </tr>
     </tbody>
 </table>
 {% endblock %}

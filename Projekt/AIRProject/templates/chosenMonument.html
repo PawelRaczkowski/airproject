@@ -134,7 +134,11 @@ intervalId=setInterval(function(){
         msg.text = textToSay;
         window.speechSynthesis.speak(msg);  
     }
-    document.getElementById('dynamicplace').appendChild(btn);        
+    var newdiv=document.createElement("div");
+    newdiv.id="newdiv";
+    document.getElementById('dynamicplace').appendChild(newdiv)
+    document.getElementById('newdiv').appendChild(btn);
+            
 }
 }, 3000)
 

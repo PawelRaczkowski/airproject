@@ -207,6 +207,7 @@ def ChosenMonument():
     monuments=cache.get('monuments')
     monument=FindMonumentByName(monuments, chosen)
     UpdateSetOfTags(monument, setOfTags)
+    db.session.commit()
     ## TODO:mapka google która wyznacza Ci trasę,jak dotrzesz to wykorzystać czytanie wikipedii głosem IVONY
 
     textToSay=getInfoString(chosen)
